@@ -1,17 +1,11 @@
 #!/usr/bin/env bash
 
-if [ -z "$1" ]
-  then
-    echo "No argument supplied"
-    echo "usage: ./generate_for_router.sh router_internal_ip"
-    exit 1 
-fi
-
-
 echo "Redirect all port 53 DNS traffic to router"
 echo '/ip firewall nat' > mikrotik_all_commands.txt
-echo 'add chain=dstnat action=dst-nat to-addresses=192.168.88.1 to-ports=53 protocol=udp dst-port=53 log=no log-prefix="" ' >> mikrotik_all_commands.txt
-echo 'add chain=dstnat action=dst-nat to-addresses=192.168.88.1 to-ports=53 protocol=tcp dst-port=53 log=no log-prefix="" ' >> mikrotik_all_commands.txt
+
+/ip firewall nat
+echo 'add action=redirect chain=dstnat dst-port=53 protocol=udp to-ports=53' >> mikrotik_all_commands.txt
+echo 'add action=redirect chain=dstnat dst-port=53 protocol=tcp to-ports=53' >> mikrotik_all_commands.txt
 
 echo "Add firewall rule to block DoH via address list"
 echo '/ip firewall filter'>> mikrotik_all_commands.txt
