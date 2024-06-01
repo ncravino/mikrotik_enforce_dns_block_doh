@@ -9,14 +9,14 @@ Fill in `Servers` with your selected TCP/UDP servers and `Use DoH Server` with y
 Or use the terminal to achieve the same config.
 
 ## Redirecting all TCP/UDP DNS requests to your router
-
-Assuming the router is on `192.168.88.1`.
+## The following NAT rules will redirect all UDP / TCP requests with port 53 as destination ##
+## The prior NAT rules will work in a ROS VLAN environment ##
 
 You can do this via IP -> Firewall -> Nat on WebFig, or via terminal (SSH/web) with:
 ```
 /ip firewall nat
-add chain=dstnat action=dst-nat to-addresses=192.168.88.1 to-ports=53 protocol=udp dst-port=53 log=no log-prefix="" 
-add chain=dstnat action=dst-nat to-addresses=192.168.88.1 to-ports=53 protocol=tcp dst-port=53 log=no log-prefix="" 
+add action=redirect chain=dstnat dst-port=53 protocol=udp to-ports=53
+add action=redirect chain=dstnat dst-port=53 protocol=tcp to-ports=53
 ```
 
 ## Blocking DoH requests via address list
