@@ -9,8 +9,8 @@ Fill in `Servers` with your selected TCP/UDP servers and `Use DoH Server` with y
 Or use the terminal to achieve the same config.
 
 ## Redirecting all TCP/UDP DNS requests to your router
-## The following NAT rules will redirect all UDP / TCP requests with port 53 as destination ##
-## The prior NAT rules will work in a ROS VLAN environment ##
+## The following NAT rules will redirect all UDP / TCP requests with port 53 to the router as destination ##
+## The prior NAT rules will NOT work in a ROS VLAN environment ##
 
 You can do this via IP -> Firewall -> Nat on WebFig, or via terminal (SSH/web) with:
 ```
