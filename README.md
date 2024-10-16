@@ -40,7 +40,7 @@ E.g.:
 /ip firewall address-list add address=dns.google list="DoH Servers"
 ``` 
 
-See the commands for adding a full list at [mirotik_doh_list_commands.txt](mikrotik_doh_list_commands.txt) based on data from [https://github.com/oneoffdallas/dohservers](https://github.com/oneoffdallas/dohservers) (see bellow for acknowlegements and license details).
+See the commands for adding a full list at [mirotik_doh_list_commands.txt](mikrotik_doh_list_commands.txt) based on data from [https://github.com/dibdot/DoH-IP-blocklists](https://github.com/dibdot/DoH-IP-blocklists) (see bellow for acknowlegements and license details).
 
 ## Scripts
 
@@ -48,7 +48,7 @@ All scripts sit under the `./scripts/` folder.
 
 ### `get_list.sh`
 
-Gets current master of `iplist.txt` from [https://github.com/oneoffdallas/dohservers](https://github.com/oneoffdallas/dohservers).
+Gets current master of `iplist.txt` from [https://github.com/dibdot/DoH-IP-blocklists](https://github.com/dibdot/DoH-IP-blocklists).
 
 ### `process_doh_list.sh`
 
@@ -76,4 +76,4 @@ You can find nice public servers at [Public DNS at European Alternatives](https:
 
 - [Mikrotik](https://mikrotik.com) for making awesome network hardware.
 - [https://european-alternatives.eu](https://european-alternatives.eu) for collecting nice alternatives under one site.
-- [https://github.com/oneoffdallas/dohservers](https://github.com/oneoffdallas/dohservers) for making available the data under their [MIT LICENSE](https://github.com/oneoffdallas/dohservers/blob/master/LICENSE).
+- [https://github.com/dibdot/DoH-IP-blocklists](https://github.com/dibdot/DoH-IP-blocklists) for making the output of their program available.
