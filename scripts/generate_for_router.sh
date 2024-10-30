@@ -3,7 +3,6 @@
 echo "Redirect all port 53 DNS traffic to router"
 echo '/ip firewall nat' > mikrotik_all_commands.txt
 
-/ip firewall nat
 echo 'add action=redirect chain=dstnat dst-port=53 protocol=udp to-ports=53' >> mikrotik_all_commands.txt
 echo 'add action=redirect chain=dstnat dst-port=53 protocol=tcp to-ports=53' >> mikrotik_all_commands.txt
 
