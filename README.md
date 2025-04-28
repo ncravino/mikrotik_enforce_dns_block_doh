@@ -17,6 +17,9 @@ You can do this via IP -> Firewall -> Nat on WebFig, or via terminal (SSH/web) w
 /ip firewall nat
 add action=redirect chain=dstnat dst-port=53 protocol=udp to-ports=53
 add action=redirect chain=dstnat dst-port=53 protocol=tcp to-ports=53
+/ipv6 firewall nat
+add action=redirect chain=dstnat dst-port=53 protocol=udp to-ports=53
+add action=redirect chain=dstnat dst-port=53 protocol=tcp to-ports=53
 ```
 
 ## Blocking DoH requests via address list
@@ -27,6 +30,8 @@ Using terminal since it's faster, but you can create the same via WebFig.
 ```
 /ip firewall filter
 add action=drop chain=forward comment="drop DoH" dst-address-list="DoH Servers"
+/ipv6 firewall filter
+add action=drop chain=forward comment="drop IPv6 DoH" dst-address-list="DoH IPv6 Servers"
 ```
 
 ### Add DoH servers to the address list 

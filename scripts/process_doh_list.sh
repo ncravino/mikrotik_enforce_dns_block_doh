@@ -10,8 +10,15 @@ cat iplist.txt | grep -v '^\s*#' | gawk '{print $1}' > full_list.txt
 cat mylist.txt | grep -v '^\s*#' | gawk '{print $1}' >> full_list.txt
 gawk -i inplace 'FNR==1{delete a} !a[$0]++' full_list.txt
 
+cat ipv6list.txt | grep -v '^\s*#' | gawk '{print $1}' > full_ipv6_list.txt
+cat myipv6list.txt | grep -v '^\s*#' | gawk '{print $1}' >> full_ipv6_list.txt
+gawk -i inplace 'FNR==1{delete a} !a[$0]++' full_ipv6_list.txt
+
 echo '/ip firewall address-list remove [find where list="DoH Servers"]' > mikrotik_doh_list_commands.txt
+echo '/ipv6 firewall address-list remove [find where list="DoH IPv6 Servers"]' >> mikrotik_doh_list_commands.txt
 echo "/ip firewall address-list" >> mikrotik_doh_list_commands.txt
 cat full_list.txt | sort -u | xargs -I% echo 'add address=% list="DoH Servers"' >> mikrotik_doh_list_commands.txt
+echo "/ipv6 firewall address-list" >> mikrotik_doh_list_commands.txt
+cat full_ipv6_list.txt | sort -u | xargs -I% echo 'add address=% list="DoH IPv6 Servers"' >> mikrotik_doh_list_commands.txt
 
 echo "All done"
